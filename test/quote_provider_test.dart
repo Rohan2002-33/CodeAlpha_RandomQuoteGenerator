@@ -1,8 +1,8 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../lib/data/quotes_data.dart';
-import '../lib/providers/quote_provider.dart';
+import 'package:codealpha_random_quote_generator/data/quotes_data.dart';
+import 'package:codealpha_random_quote_generator/providers/quote_provider.dart';
 
 void main() {
   setUp(() => SharedPreferences.setMockInitialValues({}));

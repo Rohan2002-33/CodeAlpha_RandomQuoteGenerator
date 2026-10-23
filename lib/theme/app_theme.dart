@@ -18,7 +18,9 @@ class AppTheme {
 
     return base.copyWith(
       scaffoldBackgroundColor: scheme.surface,
-      textTheme: GoogleFonts.interTextTheme(base.textTheme),
+      textTheme: base.textTheme.apply(
+        fontFamily: GoogleFonts.inter().fontFamily,
+      ),
       appBarTheme: AppBarTheme(
         centerTitle: false,
         elevation: 0,

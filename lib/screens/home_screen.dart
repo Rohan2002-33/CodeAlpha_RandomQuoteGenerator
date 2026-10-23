@@ -44,8 +44,10 @@ class HomeScreen extends StatelessWidget {
             Expanded(
               child: Center(
                 child: SingleChildScrollView(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 24,
+                    vertical: 16,
+                  ),
                   child: AnimatedSwitcher(
                     duration: const Duration(milliseconds: 350),
                     transitionBuilder: (child, animation) => FadeTransition(
@@ -119,17 +121,64 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
-class _CategoryBar extends StatelessWidget {
+class _CategoryBar extends StatefulWidget {
   const _CategoryBar({required this.selected, required this.onSelected});
 
   final String selected;
   final ValueChanged<String> onSelected;
 
   @override
+  State<_CategoryBar> createState() => _CategoryBarState();
+}
+
+class _CategoryBarState extends State<_CategoryBar> {
+  final ScrollController _scrollController = ScrollController();
+  final Map<String, GlobalKey> _categoryKeys = {
+    for (final category in kCategories) category: GlobalKey(),
+  };
+
+  @override
+  void initState() {
+    super.initState();
+    _revealSelectedCategory();
+  }
+
+  @override
+  void didUpdateWidget(covariant _CategoryBar oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.selected != widget.selected) {
+      _revealSelectedCategory();
+    }
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
+
+  void _revealSelectedCategory() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted) return;
+      final categoryContext = _categoryKeys[widget.selected]?.currentContext;
+      if (categoryContext == null) return;
+
+      Scrollable.ensureVisible(
+        categoryContext,
+        alignment: 0.5,
+        duration: const Duration(milliseconds: 250),
+        curve: Curves.easeOut,
+      );
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: 56,
       child: ListView.separated(
+        key: const ValueKey('category-bar-viewport'),
+        controller: _scrollController,
         scrollDirection: Axis.horizontal,
         padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
         itemCount: kCategories.length,
@@ -137,9 +186,10 @@ class _CategoryBar extends StatelessWidget {
         itemBuilder: (context, index) {
           final category = kCategories[index];
           return ChoiceChip(
+            key: _categoryKeys[category],
             label: Text(category),
-            selected: category == selected,
-            onSelected: (_) => onSelected(category),
+            selected: category == widget.selected,
+            onSelected: (_) => widget.onSelected(category),
           );
         },
       ),
