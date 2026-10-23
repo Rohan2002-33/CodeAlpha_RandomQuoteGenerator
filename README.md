@@ -1,17 +1,39 @@
-# codealpha_random_quote_generator
+# Quotely – Random Quote Generator
 
-A new Flutter project.
+Flutter app built for the **CodeAlpha App Development Internship (Task 2)**.
 
-## Getting Started
+## Features
+- Random quote on every app launch
+- **New Quote** button, never repeats the current quote
+- Quote text and author displayed clearly
+- Category filter (Motivation, Wisdom, Life, Technology)
+- Save favorites (persisted locally), swipe to delete
+- Copy quote to clipboard
+- Light / Dark / System theme
+- Clean, minimal Material 3 UI
 
-This project is a starting point for a Flutter application.
+## Screens
+Splash · Home · Favorites · Settings
 
-A few resources to get you started if this is your first Flutter project:
+## Tech Stack
+Flutter · Dart · Provider · shared_preferences · google_fonts
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+## Run Locally
+    git clone https://github.com/YOUR_USERNAME/CodeAlpha_RandomQuoteGenerator.git
+    cd CodeAlpha_RandomQuoteGenerator
+    flutter pub get
+    flutter run
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Test
+    flutter test
+
+## Project Structure
+    lib/
+      data/        quote model + dataset
+      providers/   QuoteProvider, ThemeProvider
+      screens/     splash, home, favorites, settings, shell
+      theme/       Material 3 themes
+      widgets/     reusable QuoteCard
+
+## Author
+Mahir Ahamed Rohan
