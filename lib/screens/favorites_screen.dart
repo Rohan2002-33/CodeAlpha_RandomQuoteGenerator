@@ -65,9 +65,7 @@ class FavoritesScreen extends StatelessWidget {
                               const SizedBox(height: 10),
                               Text(
                                 '— ${quote.author}',
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodyMedium
+                                style: Theme.of(context).textTheme.bodyMedium
                                     ?.copyWith(color: scheme.onSurfaceVariant),
                               ),
                             ],

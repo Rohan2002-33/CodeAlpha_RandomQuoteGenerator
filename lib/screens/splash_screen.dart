@@ -91,8 +91,8 @@ class _SplashScreenState extends State<SplashScreen>
                 Text(
                   'A little wisdom, every day.',
                   style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                        color: scheme.onPrimary.withValues(alpha: 0.85),
-                      ),
+                    color: scheme.onPrimary.withValues(alpha: 0.85),
+                  ),
                 ),
               ],
             ),

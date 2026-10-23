@@ -87,7 +87,8 @@ class SettingsScreen extends StatelessWidget {
               context: context,
               applicationName: 'Quotely',
               applicationVersion: '1.0.0',
-              applicationLegalese: 'Built for the CodeAlpha App Development Internship.',
+              applicationLegalese:
+                  'Built for the CodeAlpha App Development Internship.',
               children: const [
                 SizedBox(height: 12),
                 Text('A minimal random quote generator built with Flutter.'),

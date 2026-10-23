@@ -27,9 +27,8 @@ class QuoteProvider extends ChangeNotifier {
   String get category => _category;
   int get favoriteCount => _favoriteIds.length;
 
-  List<Quote> get favorites => kQuotes
-      .where((q) => _favoriteIds.contains(q.id))
-      .toList(growable: false);
+  List<Quote> get favorites =>
+      kQuotes.where((q) => _favoriteIds.contains(q.id)).toList(growable: false);
 
   bool isFavorite(Quote quote) => _favoriteIds.contains(quote.id);
 

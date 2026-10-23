@@ -24,8 +24,9 @@ class _MainShellState extends State<MainShell> {
 
   @override
   Widget build(BuildContext context) {
-    final favoriteCount =
-        context.select<QuoteProvider, int>((p) => p.favoriteCount);
+    final favoriteCount = context.select<QuoteProvider, int>(
+      (p) => p.favoriteCount,
+    );
 
     return Scaffold(
       body: IndexedStack(index: _index, children: _screens),
